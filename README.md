@@ -12,7 +12,7 @@ For not to exposure neither the API url neither the token, the testing user/deve
 ##
 
 I make use of [react-router-dom](https://www.npmjs.com/package/react-router-dom) because the requirements specify explicitly that "η εφαρμογή να τον πηγαίνει σε μία νέα σελίδα που θα του εμφανίζει μόνο τα αποτελέσματα της αναζήτησης."
-That can be made only if we implemenent a routing mechanism. In this case I use [react-router-dom](https://www.npmjs.com/package/react-router-dom).
+That can be made only if we implement a routing mechanism. In this case I use [react-router-dom](https://www.npmjs.com/package/react-router-dom).
 
 ##
 
