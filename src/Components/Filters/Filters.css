@@ -1,0 +1,15 @@
+.button {
+    right: 0;
+    background-color: orange;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    position: fixed;
+    z-index: 10;
+}
+
+
+span {
+    font-weight: bold;
+    font-size: 15px;
+}
+

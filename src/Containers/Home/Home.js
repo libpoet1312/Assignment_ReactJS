@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-
 import {Layout, Menu, Spin,} from 'antd';
-import './Home.css';
-import {API_URL, TOKEN} from "../../config";
-import axios from "axios";
+
+import {API_URL, TOKEN} from "../../config"; // import our config file
+import axios from "axios"; // async http requests
+
 import MyHeader from "../../Components/MyHeader/MyHeader";
-import Tags from "../../Components/Tags/Tags";
+import Filters from "../../Components/Filters/Filters";
 import Products from "../../Components/Products/Products";
 
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons'; // for the loading spinner
+import './Home.css'; // my css
+
 
 const { Content, Footer, Sider } = Layout;
-
 
 
 class Home extends Component {
@@ -22,7 +23,7 @@ class Home extends Component {
         products: [],
         categoryId: 'all',
         tags: [],
-        order: 'random',
+        order: 'random', // the random order means, that we display products, as fetched from the API
         selectedTags : [],
     };
 
@@ -101,13 +102,15 @@ class Home extends Component {
     searchHandler = value => {
         // value received from search form
 
-        let products = [...this.state.products];
+        let products = [...this.state.products]; // immutable copy of state
 
         // search through products for given value
+        // we transform our value, the product.name and product.description to lower-case
+
         products = products.filter(prod => {
-            return prod.name.toLowerCase().includes(value.toLowerCase()) ||
-                prod.description.toLowerCase().includes(value.toLowerCase()) ||
-                prod.id.includes(value);
+            return prod.name.toLowerCase().includes(value.toLowerCase()) || // if value is inside name
+                prod.description.toLowerCase().includes(value.toLowerCase()) || // if value is inside description
+                prod.id.includes(value); // if value is inside product.id, NOT in lower-case!
         });
 
         // redirect to result page!
@@ -135,7 +138,7 @@ class Home extends Component {
             products = this.state.products;
         }
 
-        // filter by Tags
+        // filter by Filters
         // if the user doesnt select any tags,
         // all products will be shown
 
@@ -183,12 +186,14 @@ class Home extends Component {
     render() {
         const antIcon = <LoadingOutlined style={{ fontSize: 55 }} spin />;
 
+        // Display a loading spinner, until we fetch our data from the API.
         if(!this.state.categories.length>0 || !this.state.products.length>0) return (
             <div className="spinnerContainer">
                 <Spin indicator={antIcon} />
             </div>
         );
 
+        // Render the categories menu
         let menu = (
             <Menu
                 mode="inline"
@@ -199,37 +204,39 @@ class Home extends Component {
             </Menu>
         );
 
-        let products = this.filterProducts();
+        let products = this.filterProducts(); // filtering of the products
 
         return (
             <Layout>
 
+                {/* MyHeader, with props searchHandler and the existing props, for using react-router-dom navigation props */}
                 <MyHeader  searchHandler={(value)=>this.searchHandler(value)} props={this.props}/>
 
                 <Content style={{marginTop: '40px'}}>
                     <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
+                        {/* A fixed left SideBar with height 100% the height of the viewpoint */}
                         <Sider style={{
                             height: '100vh',
                             position: 'fixed',
                             left: 0,
                         }}
                                className="site-layout-background" >
-                            {menu}
+                            {menu} {/* Our previously rendered categories menu */}
                         </Sider>
 
 
                         <Content className="Content">
-
-                            <Tags
+                            {/* the extra filters (tags/ordering)  */}
+                            <Filters
                                 tags={this.state.tags}
                                 setTags={selectedTags=>this.setTags(selectedTags)}
                                 setOrder={(order)=> this.setOrder(order)}
                             />
 
 
-
+                            {/* The main content: */}
+                            {/* The products after filtering if needed */}
                             <Products products={products}/>
-
                         </Content>
                     </Layout>
                 </Content>

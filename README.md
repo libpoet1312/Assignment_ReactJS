@@ -6,6 +6,9 @@ To run the project in dev mode, run:
 
 
 ##
+##### Attention:
+For not to exposure neither the API url neither the token, the testing user/developer must provide their own on: `config.js`
+##
 
 I make use of [react-router-dom](https://www.npmjs.com/package/react-router-dom) because the requirements specify explicitly that "η εφαρμογή να τον πηγαίνει σε μία νέα σελίδα που θα του εμφανίζει μόνο τα αποτελέσματα της αναζήτησης."
 That can be made only if we implemenent a routing mechanism. In this case I use [react-router-dom](https://www.npmjs.com/package/react-router-dom).
@@ -25,7 +28,8 @@ My app structure is:
     * Products: The main components of our app. It contains a [List](https://ant.design/components/list/) component that renders a vertical list of our products.
     * SearchResults: The page where the search results are shown, after a successful search.
     * Tags: A right placed [Drawer](https://ant.design/components/drawer/) that contains all products' tags, in the form of checkboxes.
-
+    * Error404: An error page, in case the user visits something that does not exist.
+    
 * __Containers__ : The stateful components, in which state is stored.
     * Home: This container is the first page the user access when he/she hits the '/' URL. It fetches the categories and products
     from the API given, in its _componentDidMount_ method. \
