@@ -1,68 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created by [Create React App](https://github.com/facebook/create-react-app). The purpose of this project is to implement a simple SPA using React to show my JS skills to my future employers.
 
-## Available Scripts
+To run the project in dev mode, run:
+##### `npm install`
+##### `npm start`
 
-In the project directory, you can run:
 
-### `npm start`
+##
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I make use of [react-router-dom](https://www.npmjs.com/package/react-router-dom) because the requirements specify explicitly that "η εφαρμογή να τον πηγαίνει σε μία νέα σελίδα που θα του εμφανίζει μόνο τα αποτελέσματα της αναζήτησης."
+That can be made only if we implemenent a routing mechanism. In this case I use [react-router-dom](https://www.npmjs.com/package/react-router-dom).
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+##
 
-### `npm test`
+As it is not specified in the requirements given, for the ease of graphic design and Component implementation/reuseability I use [Ant-Design](https://ant.design/), a React UI library. 
+##
+Furthermore, this app was not developed with [redux](https://redux.js.org/) because it demands small state management, so the use of it would be an overkill.
+I could use it to demonstrate my knowledge on it, but I leave it for a future assignment. :)
+##
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+My app structure is:
+* __Components__ : The stateless components, in which most rendering takes place.
+    * MyHeader: The header of our app. It contains two components. The name of the applicant which is a react-router-dom [Link](https://reactrouter.com/web/api/Link)
+    and a Search Component which is in fact an `<input type="text"/>`. 
+    * Products: The main components of our app. It contains a [List](https://ant.design/components/list/) component that renders a vertical list of our products.
+    * SearchResults: The page where the search results are shown, after a successful search.
+    * Tags: A right placed [Drawer](https://ant.design/components/drawer/) that contains all products' tags, in the form of checkboxes.
 
-### `npm run build`
+* __Containers__ : The stateful components, in which state is stored.
+    * Home: This container is the first page the user access when he/she hits the '/' URL. It fetches the categories and products
+    from the API given, in its _componentDidMount_ method. \
+    This container contains a basic Layout, with fixed SideBar and Header. The fixedSidebar
+    contains all our products' categories, fetched from the API, where as the latter is described above.\
+    In this container, the products are filtered and sorted, using the user's selections (filter by category, by tag). 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* __App.js__ : App.js serves as a routing handler (with the use of react-router-dom) between our app entry point `index.js` and the rest routes.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* __config.js__ : It stores all needed variables, our API url and the token given.

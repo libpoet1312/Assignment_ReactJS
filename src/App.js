@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import 'antd/dist/antd.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Home from "./Containers/Home/Home";
+import SearchResults from "./Components/SearchResults/SearchResults";
+import Error404 from "./Components/Error404/Error404";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={Home}/>
+
+                <Route path="/results" component={SearchResults}/>
+
+                <Route path="/" component={Error404}/>
+
+            </Switch>
+        </BrowserRouter>
+    )
+  }
 }
 
 export default App;
+

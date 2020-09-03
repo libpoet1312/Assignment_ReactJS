@@ -1,0 +1,16 @@
+.myheader {
+    background-color: #282c34;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div > a {
+    color: white;
+    font-weight: bold;
+}
+
