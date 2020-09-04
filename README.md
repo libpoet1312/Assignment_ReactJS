@@ -2,7 +2,7 @@ This project was created by [Create React App](https://github.com/facebook/creat
 
 To run the project in dev mode, on an empty folder run:
 ##### `git clone https://github.com/libpoet1312/Assignment_ReactJS.git`
-##### `npm install`
+##### `npm install --save`
 ##### `npm start`
 
 
