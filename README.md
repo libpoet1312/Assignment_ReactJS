@@ -1,9 +1,10 @@
 This project was created by [Create React App](https://github.com/facebook/create-react-app). The purpose of this project is to implement a simple SPA using React to show my JS skills to my future employers.
 
-To run the project in dev mode, on an empty folder run:
-##### `git clone https://github.com/libpoet1312/Assignment_ReactJS.git`
-##### `npm install --save`
-##### `npm start`
+To run the project in dev mode, on an empty folder run:\
+`git clone https://github.com/libpoet1312/Assignment_ReactJS.git`\
+`cd Assignment_ReactJS/`\
+`npm install --save`\
+`npm start`\
 
 
 ##
